@@ -34,14 +34,14 @@ const nextConfig: NextConfig = {
     ],
     // Faster builds
     webpackBuildWorker: true,
-    // Turbo-specific optimizations
-    turbo: {
-      // Resolve aliases for faster module resolution
-      resolveAlias: {
-        '@/features': './features',
-        '@/shared': './shared',
-        '@/core': './core'
-      }
+  },
+
+  // Turbopack configuration (moved out of experimental.turbo)
+  turbopack: {
+    resolveAlias: {
+      '@/features': './features',
+      '@/shared': './shared',
+      '@/core': './core'
     }
   },
 
