@@ -1,0 +1,45 @@
+{
+  "id": "諂",
+  "kanjialiveData": null,
+  "jishoData": {
+    "query": "諂",
+    "found": true,
+    "strokeCount": 15,
+    "meaning": "flatter",
+    "kunyomi": [
+      "へつら.う"
+    ],
+    "onyomi": [
+      "テン"
+    ],
+    "onyomiExamples": [
+      {
+        "example": "諂媚",
+        "reading": "テンビ",
+        "meaning": "currying favor, fawning on someone"
+      }
+    ],
+    "kunyomiExamples": [
+      {
+        "example": "諂う",
+        "reading": "へつらう",
+        "meaning": "to flatter, to curry favour (with), to play up (to), to suck up (to), to toady (to)"
+      }
+    ],
+    "radical": {
+      "symbol": "言",
+      "forms": [
+        "訁"
+      ],
+      "meaning": "speech"
+    },
+    "parts": [
+      "臼",
+      "言"
+    ],
+    "strokeOrderDiagramUri": "http://classic.jisho.org/static/images/stroke_diagrams/35522_frames.png",
+    "strokeOrderSvgUri": "https://d1w6u4xc3l95km.cloudfront.net/kanji-2015-03/08ac2.svg",
+    "strokeOrderGifUri": "https://raw.githubusercontent.com/mistval/kanji_images/master/gifs/8ac2.gif",
+    "uri": "https://jisho.org/search/%E8%AB%82%23kanji"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "蚓",
+  "kanjialiveData": null,
+  "jishoData": {
+    "query": "蚓",
+    "found": true,
+    "strokeCount": 10,
+    "meaning": "earthworm",
+    "kunyomi": [
+      "みみず"
+    ],
+    "onyomi": [
+      "ズ",
+      "イン"
+    ],
+    "onyomiExamples": [
+      {
+        "example": "【ミミズ】",
+        "reading": "earthworm, worm",
+        "meaning": ""
+      },
+      {
+        "example": "枷蚯蚓",
+        "reading": "カセミミズ",
+        "meaning": "Epimenia verrucosa (mollusc)"
+      }
+    ],
+    "kunyomiExamples": [
+      {
+        "example": "枷蚯蚓",
+        "reading": "かせみみず",
+        "meaning": "Epimenia verrucosa (mollusc)"
+      },
+      {
+        "example": "【イトミミズ】",
+        "reading": "tubifex worm",
+        "meaning": ""
+      }
+    ],
+    "radical": {
+      "symbol": "虫",
+      "meaning": "insect"
+    },
+    "parts": [
+      "弓",
+      "虫",
+      "｜"
+    ],
+    "strokeOrderDiagramUri": "http://classic.jisho.org/static/images/stroke_diagrams/34451_frames.png",
+    "strokeOrderSvgUri": "https://d1w6u4xc3l95km.cloudfront.net/kanji-2015-03/08693.svg",
+    "strokeOrderGifUri": "https://raw.githubusercontent.com/mistval/kanji_images/master/gifs/8693.gif",
+    "uri": "https://jisho.org/search/%E8%9A%93%23kanji"
+  }
+}

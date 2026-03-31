@@ -1,6 +1,6 @@
 'use client';
 import { Link, useRouter, usePathname } from '@/core/i18n/routing';
-import { House, Sparkles, TrendingUp, Trophy, ChevronLeft, BookOpen } from 'lucide-react';
+import { House, Sparkles, TrendingUp, Trophy, ChevronLeft, BookOpen, Network } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/shared/hooks/useAudio';
 import { useEffect, useRef } from 'react';
@@ -112,14 +112,15 @@ const Sidebar = () => {
   }, [hotkeysOn, router]);
 
   const navItems = [
-    { href: '/', icon: <House />, label: 'Home' },
-    { href: '/dictionary', icon: <BookOpen />, label: 'Dictionary' },
-    { href: '/kana', icon: 'あ', label: 'Kana' },
-    { href: '/vocabulary', icon: '語', label: 'Vocabulary' },
-    { href: '/kanji', icon: '字', label: 'Kanji' },
-    { href: '/progress', icon: <TrendingUp />, label: 'Progress' },
-    { href: '/achievements', icon: <Trophy />, label: 'Achievements' },
-    { href: '/preferences', icon: <Sparkles className={clsx('shrink-0', pathWithoutLocale !== '/preferences' && 'motion-safe:animate-bounce')} />, label: 'Preferences' }
+    { href: '/', icon: <House />, label: 'Home', exact: true },
+    { href: '/dictionary', icon: <BookOpen />, label: 'Dictionary', exact: true },
+    { href: '/kana', icon: 'あ', label: 'Kana', exact: false },
+    { href: '/vocabulary', icon: '語', label: 'Vocabulary', exact: false },
+    { href: '/kanji', icon: '字', label: 'Kanji', exact: false },
+    { href: '/kanji-map', icon: <Network />, label: 'Kanji Map', exact: false },
+    { href: '/progress', icon: <TrendingUp />, label: 'Progress', exact: true },
+    { href: '/achievements', icon: <Trophy />, label: 'Achievements', exact: true },
+    { href: '/preferences', icon: <Sparkles className={clsx('shrink-0', pathWithoutLocale !== '/preferences' && 'motion-safe:animate-bounce')} />, label: 'Preferences', exact: true }
   ];
 
   return (
@@ -159,7 +160,7 @@ const Sidebar = () => {
               href={item.href}
               icon={item.icon}
               label={item.label}
-              isActive={pathWithoutLocale === item.href}
+              isActive={item.exact ? pathWithoutLocale === item.href : pathWithoutLocale === item.href || pathWithoutLocale.startsWith(item.href + '/')}
               isExpanded={isExpanded}
               onClick={playClick}
             />
@@ -202,7 +203,7 @@ const Sidebar = () => {
             key={item.href}
             href={item.href}
             icon={item.icon}
-            isActive={pathWithoutLocale === item.href}
+            isActive={item.exact ? pathWithoutLocale === item.href : pathWithoutLocale === item.href || pathWithoutLocale.startsWith(item.href + '/')}
             onClick={playClick}
           />
         ))}

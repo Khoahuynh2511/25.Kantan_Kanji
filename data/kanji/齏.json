@@ -1,0 +1,43 @@
+{
+  "id": "齏",
+  "kanjialiveData": null,
+  "jishoData": {
+    "query": "齏",
+    "found": true,
+    "strokeCount": 23,
+    "meaning": "dishes seasoned with vinegar or miso",
+    "kunyomi": [
+      "あえもの",
+      "なます",
+      "あ.える"
+    ],
+    "onyomi": [
+      "セイ",
+      "サイ"
+    ],
+    "onyomiExamples": [
+      {
+        "example": "粉韲",
+        "reading": "フンセイ",
+        "meaning": "pulverization"
+      }
+    ],
+    "kunyomiExamples": [],
+    "radical": {
+      "symbol": "齊",
+      "meaning": "even, uniformly"
+    },
+    "parts": [
+      "亠",
+      "刀",
+      "廾",
+      "氏",
+      "韭",
+      "齊"
+    ],
+    "strokeOrderDiagramUri": "http://classic.jisho.org/static/images/stroke_diagrams/40783_frames.png",
+    "strokeOrderSvgUri": "https://d1w6u4xc3l95km.cloudfront.net/kanji-2015-03/09f4f.svg",
+    "strokeOrderGifUri": "https://raw.githubusercontent.com/mistval/kanji_images/master/gifs/9f4f.gif",
+    "uri": "https://jisho.org/search/%E9%BD%8F%23kanji"
+  }
+}

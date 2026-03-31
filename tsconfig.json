@@ -33,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "features/KanjiMap/types/index.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "the-kanji-map-main"]
 }

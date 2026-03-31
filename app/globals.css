@@ -7,6 +7,38 @@
   --breakpoint-3xl: 110rem;
 }
 
+/* Kanji Map: custom utilities */
+.shadow-inner-shadow {
+  box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 0.08);
+}
+
+/* Kanji Map: map shadcn-style color tokens to KanjiKantan's CSS variables */
+@theme inline {
+  --color-background: var(--background-color);
+  --color-foreground: var(--main-color);
+  --color-popover: var(--background-color);
+  --color-popover-foreground: var(--main-color);
+  --color-muted: var(--card-color);
+  --color-muted-foreground: var(--secondary-color);
+  --color-border: var(--border-color);
+  --color-input: var(--card-color);
+  --color-ring: var(--main-color);
+  --color-accent: var(--card-color);
+  --color-accent-foreground: var(--main-color);
+  --color-primary: var(--main-color);
+  --color-primary-foreground: var(--background-color);
+  --color-secondary: var(--card-color);
+  --color-secondary-foreground: var(--main-color);
+  --color-destructive: oklch(0.704 0.191 22.216);
+  --color-lighter: var(--border-color);
+
+  /* radius tokens used by shadcn components */
+  --radius: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
 body {
   font-family: 'Noto Sans JP', sans-serif;
 }
