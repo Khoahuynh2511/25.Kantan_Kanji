@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     loadData();
 
     const body = await req.json();
-    let kanjiList: string[] = typeof body.kanjiList === 'string'
+    const kanjiList: string[] = typeof body.kanjiList === 'string'
       ? body.kanjiList.split('')
       : body.kanjiList;
 
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(result);
-  } catch (err) {
+  } catch (_err) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

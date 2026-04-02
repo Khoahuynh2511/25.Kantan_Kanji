@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { buildKanjiHref } from '@/features/KanjiMap/lib/kanji-routing';
 
-interface RadicalEntry {
+export interface RadicalEntry {
   number: string;
   radical: string;
   strokes: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Sidebar from '@/shared/components/Menu/Sidebar';
-import RadicalsContent from '@/features/Radicals/components/RadicalsContent';
+import RadicalsContent, { type RadicalEntry } from '@/features/Radicals/components/RadicalsContent';
 import { getNavigableRadicalIds } from '@/features/KanjiMap/lib';
 import radicallist from '@/data/radicallist.json';
 
@@ -15,7 +15,7 @@ export default function RadicalsPage() {
   return (
     <div className="min-h-[100dvh] max-w-[100dvw] flex">
       <Sidebar />
-      <RadicalsContent radicals={radicallist as any} navigableIds={navigableIds} />
+      <RadicalsContent radicals={radicallist as RadicalEntry[]} navigableIds={navigableIds} />
     </div>
   );
 }

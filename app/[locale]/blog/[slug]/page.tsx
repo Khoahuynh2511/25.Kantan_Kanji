@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { use } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
-import { use } from 'react';
 
 const BLOG_CONTENT: Record<string, string> = {
   gambari: `# Gambari — The Japanese Art of Perseverance
