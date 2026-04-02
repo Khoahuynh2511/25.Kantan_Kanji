@@ -1,24 +1,11 @@
 import Link from 'next/link';
-
-interface ReadingSummary {
-  key: string;
-  title: string;
-  titleRomaji: string;
-  titleJp: string;
-  p_tag: string;
-  s_tag: string;
-  shortDescription: string;
-}
+import { readReadingSummaries, type ReadingSummary } from '@/shared/lib/hanabira/readingData';
 
 export default async function ReadingCards() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
   let readings: ReadingSummary[] = [];
 
   try {
-    const res = await fetch(`${baseUrl}/api/hanabira/reading`, {
-      next: { revalidate: 3600 },
-    });
-    readings = await res.json();
+    readings = readReadingSummaries();
   } catch {
     return <p className="text-red-500">Failed to load readings.</p>;
   }

@@ -1,10 +1,5 @@
 import GrammarTitlesList from './GrammarTitlesList';
-
-interface GrammarItem {
-  title: string;
-  short_explanation: string;
-  p_tag: string;
-}
+import { readGrammarByPTag, type GrammarItem } from '@/shared/lib/hanabira/grammarData';
 
 interface GrammarTitlesProps {
   lang: string;
@@ -13,15 +8,9 @@ interface GrammarTitlesProps {
 }
 
 export default async function GrammarTitles({ lang, pTag, slugBase }: GrammarTitlesProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
-
   let items: GrammarItem[] = [];
   try {
-    const res = await fetch(`${baseUrl}/api/hanabira/grammar?p_tag=${pTag}`, {
-      next: { revalidate: 3600 },
-    });
-    const data = await res.json();
-    items = Array.isArray(data) ? data : [];
+    items = readGrammarByPTag(pTag);
   } catch {
     return <p className="px-4 text-red-500">Failed to load grammar list for {pTag}.</p>;
   }
