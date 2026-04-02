@@ -37,5 +37,5 @@
     "tailwind.config.js",
     "features/KanjiMap/types/index.d.ts"
   ],
-  "exclude": ["node_modules", "the-kanji-map-main"]
+  "exclude": ["node_modules", "the-kanji-map-main", "hanabira.org-main"]
 }

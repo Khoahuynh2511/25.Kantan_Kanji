@@ -4,6 +4,7 @@ import { MobileLayout } from "@/features/KanjiMap/components/mobile-layout";
 import { SearchInput } from "@/features/KanjiMap/components/search-input";
 import { SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Sidebar from "@/shared/components/Menu/Sidebar";
 
 export const metadata: Metadata = {
   title: "Kanji Map",
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
 
 export default function KanjiMapPage() {
   return (
-    <div className="size-full flex flex-col">
+    <div className="min-h-[100dvh] max-w-[100dvw] flex">
+      <Sidebar />
+      <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
       <KanjiMapHeader className="w-full" />
 
       {/* Mobile */}
@@ -81,6 +84,7 @@ export default function KanjiMapPage() {
           <div className="p-4" />
           <div className="p-4 border-l" />
         </div>
+      </div>
       </div>
     </div>
   );

@@ -10,6 +10,15 @@ export default {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        listItem: '35px 1fr',
+        body: '200px 1fr',
+        itemsSentences: '399px 1fr',
+        blogSideLeft: '48px 1fr 40px',
+        blogSideRight: '48px 1fr 120px',
+        blogs: '1fr 200px',
+        closeBlogs: '1fr 80px'
+      },
       keyframes: {
         aurora: {
           '0%, 100%': { backgroundPosition: '0% 50%' },

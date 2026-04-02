@@ -3,6 +3,7 @@ import { routing, type Locale } from '@/core/i18n/routing';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import ClientLayout from '../ClientLayout';
+import { UserProvider } from '@/shared/context/UserContext';
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
@@ -30,7 +31,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      <ClientLayout>{children}</ClientLayout>
+      <UserProvider>
+        <ClientLayout>{children}</ClientLayout>
+      </UserProvider>
     </NextIntlClientProvider>
   );
 }

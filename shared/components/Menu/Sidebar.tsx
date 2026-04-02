@@ -1,11 +1,18 @@
 'use client';
 import { Link, useRouter, usePathname } from '@/core/i18n/routing';
-import { House, Sparkles, TrendingUp, Trophy, ChevronLeft, BookOpen, Network } from 'lucide-react';
+import { House, Sparkles, TrendingUp, Trophy, ChevronLeft, BookOpen, Network, FileText, ScanText, Languages, GitBranch, Workflow, Zap, Library } from 'lucide-react';
 import clsx from 'clsx';
 import { useClick } from '@/shared/hooks/useAudio';
 import { useEffect, useRef } from 'react';
 import usePreferencesStore from '@/features/Preferences/store/usePreferencesStore';
 import { removeLocaleFromPath } from '@/shared/lib/pathUtils';
+
+interface NavItem {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  exact: boolean;
+}
 
 interface NavItemProps {
   href: string;
@@ -14,10 +21,9 @@ interface NavItemProps {
   isActive: boolean;
   isExpanded: boolean;
   onClick: () => void;
-  className?: string;
 }
 
-const NavItem = ({ href, icon, label, isActive, isExpanded, onClick, className }: NavItemProps) => (
+const NavItemComponent = ({ href, icon, label, isActive, isExpanded, onClick }: NavItemProps) => (
   <Link
     href={href}
     className={clsx(
@@ -26,8 +32,7 @@ const NavItem = ({ href, icon, label, isActive, isExpanded, onClick, className }
       isExpanded ? 'px-4' : 'px-3 justify-center',
       isActive
         ? 'text-[var(--main-color)] bg-[var(--card-color)]'
-        : 'text-[var(--secondary-color)] hover:bg-[var(--card-color)] hover:text-[var(--text-color)]',
-      className
+        : 'text-[var(--secondary-color)] hover:bg-[var(--card-color)] hover:text-[var(--text-color)]'
     )}
     onClick={onClick}
   >
@@ -111,16 +116,43 @@ const Sidebar = () => {
     };
   }, [hotkeysOn, router]);
 
-  const navItems = [
+  const mainItems: NavItem[] = [
     { href: '/', icon: <House />, label: 'Home', exact: true },
     { href: '/dictionary', icon: <BookOpen />, label: 'Dictionary', exact: true },
-    { href: '/kana', icon: 'あ', label: 'Kana', exact: false },
-    { href: '/vocabulary', icon: '語', label: 'Vocabulary', exact: false },
     { href: '/kanji', icon: '字', label: 'Kanji', exact: false },
     { href: '/kanji-map', icon: <Network />, label: 'Kanji Map', exact: false },
+    { href: '/quick-kanji', icon: <Zap />, label: 'Quick Kanji', exact: false },
+    { href: '/radicals', icon: '部', label: 'Radicals', exact: false },
+    { href: '/vocabulary', icon: '語', label: 'Vocabulary', exact: false },
+    { href: '/quick-vocab', icon: <Library />, label: 'Quick Vocab', exact: false },
+    { href: '/kana', icon: 'あ', label: 'Kana', exact: false },
+    { href: '/japanese/grammarlist', icon: <Languages />, label: 'Grammar', exact: false },
+    { href: '/reading', icon: <FileText />, label: 'Reading', exact: false },
+    { href: '/text-parser', icon: <ScanText />, label: 'Text Parser', exact: false },
     { href: '/progress', icon: <TrendingUp />, label: 'Progress', exact: true },
     { href: '/achievements', icon: <Trophy />, label: 'Achievements', exact: true },
-    { href: '/preferences', icon: <Sparkles className={clsx('shrink-0', pathWithoutLocale !== '/preferences' && 'motion-safe:animate-bounce')} />, label: 'Preferences', exact: true }
+    { href: '/preferences', icon: <Sparkles className={clsx('shrink-0', pathWithoutLocale !== '/preferences' && 'motion-safe:animate-bounce')} />, label: 'Preferences', exact: true },
+  ];
+
+  const experimentItems: NavItem[] = [
+    { href: '/word-hierarchy', icon: <GitBranch />, label: 'Word Hierarchy', exact: false },
+    { href: '/grammar-graph', icon: <Workflow />, label: 'Grammar Graph', exact: false },
+  ];
+
+  const isItemActive = (item: NavItem) =>
+    item.exact
+      ? pathWithoutLocale === item.href
+      : pathWithoutLocale === item.href || pathWithoutLocale.startsWith(item.href + '/');
+
+  const mobileItems: NavItem[] = [
+    { href: '/', icon: <House />, label: 'Home', exact: true },
+    { href: '/kanji', icon: '字', label: 'Kanji', exact: false },
+    { href: '/vocabulary', icon: '語', label: 'Vocabulary', exact: false },
+    { href: '/japanese/grammarlist', icon: <Languages />, label: 'Grammar', exact: false },
+    { href: '/reading', icon: <FileText />, label: 'Reading', exact: false },
+    { href: '/text-parser', icon: <ScanText />, label: 'Text Parser', exact: false },
+    { href: '/progress', icon: <TrendingUp />, label: 'Progress', exact: true },
+    { href: '/preferences', icon: <Sparkles />, label: 'Preferences', exact: true },
   ];
 
   return (
@@ -153,14 +185,30 @@ const Sidebar = () => {
           </span>
         </div>
 
-        <nav className="flex-1 flex flex-col gap-1 py-4 px-2">
-          {navItems.map(item => (
-            <NavItem
+        <nav className="flex-1 flex flex-col gap-0.5 py-4 px-2 overflow-y-auto">
+          {mainItems.map(item => (
+            <NavItemComponent
               key={item.href}
               href={item.href}
               icon={item.icon}
               label={item.label}
-              isActive={item.exact ? pathWithoutLocale === item.href : pathWithoutLocale === item.href || pathWithoutLocale.startsWith(item.href + '/')}
+              isActive={isItemActive(item)}
+              isExpanded={isExpanded}
+              onClick={playClick}
+            />
+          ))}
+
+          <div className={clsx('my-2', isExpanded ? 'mx-2' : 'mx-1')}>
+            <div className="h-px bg-[var(--border-color)]" />
+          </div>
+
+          {experimentItems.map(item => (
+            <NavItemComponent
+              key={item.href}
+              href={item.href}
+              icon={item.icon}
+              label={item.label}
+              isActive={isItemActive(item)}
               isExpanded={isExpanded}
               onClick={playClick}
             />
@@ -198,12 +246,12 @@ const Sidebar = () => {
           'flex justify-evenly items-center py-1.5 px-1'
         )}
       >
-        {navItems.map(item => (
+        {mobileItems.map(item => (
           <MobileNavItem
             key={item.href}
             href={item.href}
             icon={item.icon}
-            isActive={item.exact ? pathWithoutLocale === item.href : pathWithoutLocale === item.href || pathWithoutLocale.startsWith(item.href + '/')}
+            isActive={isItemActive(item)}
             onClick={playClick}
           />
         ))}

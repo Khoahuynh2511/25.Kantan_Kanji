@@ -14,6 +14,7 @@ import { KanjiMapHeader } from "@/features/KanjiMap/components/header";
 import { KanjiPageContent } from "./inner";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Sidebar from "@/shared/components/Menu/Sidebar";
 
 export async function generateMetadata({
   params,
@@ -51,17 +52,20 @@ export default async function KanjiMapDetailPage({
   }
 
   return (
-    <div className="size-full flex flex-col">
-      <KanjiMapHeader className="w-full" />
-      <KanjiPageContent
-        requestedId={requestedId}
-        canonicalId={canonicalId}
-        variantInfo={getKanjiVariants(canonicalId)}
-        kanjiInfo={kanjiInfo}
-        graphData={graphData}
-        strokeAnimation={strokeAnimation}
-        navigableRadicalIds={navigableRadicalIds}
-      />
+    <div className="min-h-[100dvh] max-w-[100dvw] flex">
+      <Sidebar />
+      <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
+        <KanjiMapHeader className="w-full" />
+        <KanjiPageContent
+          requestedId={requestedId}
+          canonicalId={canonicalId}
+          variantInfo={getKanjiVariants(canonicalId)}
+          kanjiInfo={kanjiInfo}
+          graphData={graphData}
+          strokeAnimation={strokeAnimation}
+          navigableRadicalIds={navigableRadicalIds}
+        />
+      </div>
     </div>
   );
 }
