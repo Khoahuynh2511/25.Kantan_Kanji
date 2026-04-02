@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-export interface WordNodeData {
+export interface WordNodeData extends Record<string, unknown> {
   word: string;
   meaning: string;
   example?: string;
