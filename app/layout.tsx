@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+import './font-families.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import GoogleAnalytics from '@/core/analytics/GoogleAnalytics';
 import MSClarity from '@/core/analytics/MSClarity';
@@ -9,6 +10,7 @@ import {
   kanTanSchema
 } from '@/shared/components/SEO/StructuredData';
 import { Metadata, Viewport } from 'next';
+import { googleFontsStylesheetUrl } from '@/features/Preferences/data/fonts.prod';
 
 const googleVerificationToken = process.env.GOOGLE_VERIFICATION_TOKEN || '';
 const msVerificationToken = process.env.MS_VERIFICATION_TOKEN || '';
@@ -121,6 +123,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='anonymous'
+        />
+        <link rel='stylesheet' href={googleFontsStylesheetUrl} />
         <StructuredData data={kanTanSchema} />
       </head>
       <body tabIndex={-1}>
