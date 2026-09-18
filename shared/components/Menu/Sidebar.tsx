@@ -399,7 +399,7 @@ const Sidebar = () => {
         className={clsx(
           'lg:hidden fixed bottom-0 left-0 right-0 z-50',
           'bg-[var(--card-color)] border-t-2 border-[var(--border-color)]',
-          'grid grid-cols-5 items-center gap-1 py-1.5 px-2'
+          'grid h-14 grid-cols-5 items-center gap-1 px-2'
         )}
       >
         {mobileItems.map(item => (

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  type CarouselApi,
-} from "./ui/carousel";
-import { cn } from "@/features/KanjiMap/lib/utils";
-import { motion } from "framer-motion";
+  type CarouselApi
+} from './ui/carousel';
+import { cn } from '@/features/KanjiMap/lib/utils';
+import { motion } from 'framer-motion';
 
-import * as React from "react";
+import * as React from 'react';
 
 type Tab = {
   id: number;
@@ -21,7 +21,7 @@ export const MobileLayout = ({
   initialActiveTab = 0,
   activeTab: controlledActiveTab,
   onActiveTabChange,
-  disabled = false,
+  disabled = false
 }: {
   tabs: Tab[];
   initialActiveTab?: number;
@@ -30,7 +30,7 @@ export const MobileLayout = ({
   disabled?: boolean;
 }) => {
   const [api, setApi] = React.useState<CarouselApi>();
-  const isControlled = typeof controlledActiveTab === "number";
+  const isControlled = typeof controlledActiveTab === 'number';
   const [internalActiveTab, setInternalActiveTab] =
     React.useState(initialActiveTab);
   const activeTab = isControlled ? controlledActiveTab : internalActiveTab;
@@ -60,7 +60,7 @@ export const MobileLayout = ({
       }
       onActiveTabChange?.(nextTab);
     },
-    [isControlled, onActiveTabChange],
+    [isControlled, onActiveTabChange]
   );
 
   React.useEffect(() => {
@@ -80,10 +80,10 @@ export const MobileLayout = ({
       }
     };
 
-    api.on("select", handleSelect);
+    api.on('select', handleSelect);
 
     return () => {
-      api.off("select", handleSelect);
+      api.off('select', handleSelect);
     };
   }, [activeTab, api, setActiveTab]);
 
@@ -95,15 +95,15 @@ export const MobileLayout = ({
   };
 
   return (
-    <div className="size-full overflow-hidden">
+    <div className='relative size-full overflow-hidden'>
       <Carousel
         setApi={setApi}
-        className="size-full pb-10"
+        className='size-full pb-24'
         opts={{ watchDrag: false, startIndex: initialCarouselTab.current }}
       >
-        <CarouselContent className="relative size-full">
-          {tabs.map((tab) => (
-            <CarouselItem key={tab.id} className="min-h-full">
+        <CarouselContent className='relative size-full'>
+          {tabs.map(tab => (
+            <CarouselItem key={tab.id} className='min-h-full'>
               {tab.content}
             </CarouselItem>
           ))}
@@ -111,7 +111,7 @@ export const MobileLayout = ({
       </Carousel>
       <div
         className={cn(
-          "absolute bg-background bottom-0 space-x-1 border-t cursor-pointer px-[3px] py-[3.2px] shadow-inner-shadow w-full grid grid-cols-5 shrink-0"
+          'absolute bottom-14 z-40 grid w-full shrink-0 grid-cols-5 space-x-1 border-t bg-background px-[3px] py-[3.2px] shadow-inner-shadow'
         )}
       >
         {tabs.map((tab, idx) => (
@@ -120,19 +120,19 @@ export const MobileLayout = ({
             onClick={() => handleTabClick(idx)}
             disabled={activeTab === idx ? false : disabled}
             className={cn(
-              "relative px-3.5 py-1.5 sm:text-sm font-medium transition focus-visible:outline-1 focus-visible:ring-1 focus-visible:outline-hidden flex gap-2 items-center",
-              activeTab === idx ? "text-foreground!" : " text-foreground/50"
+              'relative px-3.5 py-1.5 sm:text-sm font-medium transition focus-visible:outline-1 focus-visible:ring-1 focus-visible:outline-hidden flex gap-2 items-center',
+              activeTab === idx ? 'text-foreground!' : ' text-foreground/50'
             )}
-            style={{ WebkitTapHighlightColor: "transparent" }}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             {activeTab === idx && (
               <motion.span
-                layoutId="bubble"
-                className="absolute inset-0 z-10 bg-muted/50 mix-blend-screen shadow-inner-shadow border rounded-md"
-                transition={{ type: "spring", bounce: 0.19, duration: 0.4 }}
+                layoutId='bubble'
+                className='absolute inset-0 z-10 bg-muted/50 mix-blend-screen shadow-inner-shadow border rounded-md'
+                transition={{ type: 'spring', bounce: 0.19, duration: 0.4 }}
               />
             )}
-            <span className="relative size-full text-center">{tab.label}</span>
+            <span className='relative size-full text-center'>{tab.label}</span>
           </button>
         ))}
       </div>
